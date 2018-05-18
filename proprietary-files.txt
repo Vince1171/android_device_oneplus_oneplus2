@@ -1,13 +1,7 @@
--app/TimeService/TimeService.apk
--app/qcrilmsgtunnel/qcrilmsgtunnel.apk
--app/shutdownlistener/shutdownlistener.apk
--framework/qcnvitems.jar
--framework/qcrilhook.jar
 -lib/libloc_api_v02.so
 -lib/libloc_ds_api.so
 -lib64/libloc_api_v02.so
 -lib64/libloc_ds_api.so
--priv-app/com.qualcomm.location/com.qualcomm.location.apk
 -vendor/lib/libmm-abl.so
 -vendor/lib/libtime_genoff.so
 -vendor/lib64/libmm-abl.so
@@ -102,7 +96,6 @@ etc/permissions/com.google.widevine.software.drm.xml
 etc/permissions/com.qualcomm.location.xml
 etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
-framework/com.google.widevine.software.drm.jar
 lib/hw/camera.msm8994.so
 lib/hw/lights.msm8994.so
 lib/libcnefeatureconfig.so
