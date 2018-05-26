@@ -573,6 +573,7 @@ service imsqmidaemon /system/bin/imsqmidaemon
     user system
     socket ims_qmid stream 0660 system radio
     group radio log diag
+    disabled
 
 service imsdatadaemon /system/bin/imsdatadaemon
     class main
@@ -598,6 +599,7 @@ service imscmservice /system/bin/imscmservice
    class main
    user system
    group radio diag log
+   disabled
 
 service usf_tester /system/bin/usf_tester
     user system
@@ -816,6 +818,7 @@ service qmuxd /system/bin/qmuxd
     user root
     group radio audio bluetooth gps qcom_diag
     writepid /dev/cpuset/system-background/tasks
+    disabled
 
 service netmgrd /system/bin/netmgrd
     class main
@@ -977,6 +980,7 @@ service ril-daemon /system/bin/rild
     socket rild-debug stream 660 radio system
     user root
     group radio cache inet misc audio log readproc wakelock qcom_diag net_raw
+    disabled
 
 service ril-daemon2 /system/bin/rild -c 2
     class main
@@ -984,6 +988,7 @@ service ril-daemon2 /system/bin/rild -c 2
     socket rild-debug2 stream 660 radio system
     user root
     group radio cache inet misc audio log readproc wakelock qcom_diag net_raw
+    disabled
 
 service profiler_daemon /system/bin/profiler_daemon
     class late_start
