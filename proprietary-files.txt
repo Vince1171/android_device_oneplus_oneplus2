@@ -295,6 +295,7 @@ vendor/lib64/libulp2.so
 vendor/lib64/libxtadapter.so
 vendor/lib64/libxtwifi_ulp_adaptor.so
 vendor/lib64/libnetmgr.so
+vendor/lib/libnetmgr.so
 vendor/lib/libconfigdb.so
 
 # Graphics - kanged from Angler N2G48C
