@@ -59,6 +59,7 @@ TARGET_SCREEN_WIDTH := 1080
 
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-hwui-memory.mk)
+$(call inherit-product, device/oneplus/oneplus2/mdt.mk)
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
@@ -214,7 +215,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.oneplus2.power.sh \
-    init.qcom.bt.sh \
+    init_wlan_bt.sh \
     init.qcom.power.rc \
     init.qcom.rc \
     init.qcom.sh \
@@ -252,6 +253,24 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
+PRODUCT_PROPERTY_OVERRIDES += \
+     ro.qc.sensors.wl_dis=true
+
+# Ubuntu Overlay Files
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/ubuntu/70-oneplus2.rules:system/halium/lib/udev/rules.d/70-oneplus2.rules \
+    $(LOCAL_PATH)/ubuntu/70-oneplus2.rules:system/halium/usr/lib/lxc-android-config/70-oneplus2.rules \
+    $(LOCAL_PATH)/ubuntu/adbd.conf:system/halium/etc/init/adbd.conf \
+    $(LOCAL_PATH)/ubuntu/adbd.conf:system/halium/etc/init/android-tools-adb.conf \
+    $(LOCAL_PATH)/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
+    $(LOCAL_PATH)/ubuntu/config.xml:system/halium/usr/share/powerd/device_configs/config-default.xml \
+    $(LOCAL_PATH)/ubuntu/config.xml:system/halium/usr/share/powerd/device_configs/config-oneplus2.xml \
+    $(LOCAL_PATH)/ubuntu/android.conf:system/halium/etc/ubuntu-touch-session.d/android.conf
+#   need to be optimized
+
+#This keeps time correct across reboots
+PRODUCT_PACKAGES += timekeep
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/hostapd.accept:system/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/wifi/hostapd.conf:system/etc/hostapd/hostapd_default.conf \
@@ -259,7 +278,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/wifi/WCNSS_cfg.dat \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+    $(LOCAL_PATH)/rootdir/etc/init_wlan_bt.sh:system/etc/init_wlan_bt.sh \
+    $(LOCAL_PATH)/rootdir/etc/unblock_wakelock.sh:system/etc/unblock_wakelock.sh
 
 # Inherit from oppo-common
 $(call inherit-product, device/oppo/common/common.mk)

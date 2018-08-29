@@ -42,6 +42,8 @@ on early-init
 
     write /proc/sys/vm/swappiness 100
     write /proc/sys/vm/page-cluster 0
+    mkdir /dev/cpuset 0777 system system
+    mount cpuset cpuset /dev/cpuset
 
 on fs
     mount_all /fstab.qcom
@@ -461,13 +463,13 @@ on post-fs-data
     mkdir /data/hostapd 0770 system wifi
 
     # Create /data/time folder for time-services
-    mkdir /data/time/ 0700 system system
+    mkdir /data/time/ 0777 system system
 
-    mkdir /data/audio/ 0770 media audio
+    mkdir /data/audio/ 0777 media audio
 
     # Create a folder for audio delta files
-    mkdir /data/audio/acdbdata 0770 media audio
-    mkdir /data/audio/acdbdata/delta 0770 media audio
+    mkdir /data/audio/acdbdata 0777 media audio
+    mkdir /data/audio/acdbdata/delta 0777 media audio
 
     # Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
@@ -557,30 +559,29 @@ service thermal-engine /system/vendor/bin/thermal-engine
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service time_daemon /system/bin/time_daemon
-    class late_start
-    user root
-    group root
-    writepid /dev/cpuset/system-background/tasks
+#service time_daemon /system/bin/time_daemon
+#    class late_start
+#    user root
+#    group root
+#    writepid /dev/cpuset/system-background/tasks
 
 service adsprpcd /system/bin/adsprpcd
     class main
     user media
     group media
+    disable
 
 service imsqmidaemon /system/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
     group radio log diag
-    disabled
 
 service imsdatadaemon /system/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
     group system wifi radio inet log diag
-    disabled
 
 on property:sys.ims.QMI_DAEMON_STATUS=1
     start imsdatadaemon
@@ -590,7 +591,7 @@ service ims_rtp_daemon /system/bin/ims_rtp_daemon
    user system
    socket ims_rtpd stream 0660 system radio
    group radio diag inet log
-   disabled
+
 
 on property:sys.ims.DATA_DAEMON_STATUS=1
     start ims_rtp_daemon
@@ -764,20 +765,6 @@ service hci_filter_root /system/bin/wcnss_filter
     group bluetooth qcom_diag net_bt_stack system
     disabled
 
-service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
-    class core
-    user root
-    seclabel u:r:bluetooth_loader:s0
-    oneshot
-
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    seclabel u:r:bluetooth_loader:s0
-    oneshot
-
 on property:bluetooth.hciattach=true
     start hciattach
 
@@ -818,7 +805,6 @@ service qmuxd /system/bin/qmuxd
     user root
     group radio audio bluetooth gps qcom_diag
     writepid /dev/cpuset/system-background/tasks
-    disabled
 
 service netmgrd /system/bin/netmgrd
     class main
@@ -842,12 +828,6 @@ service qti /system/vendor/bin/qti
     group radio net_raw qcom_diag usb net_admin
     disabled
     writepid /dev/cpuset/system-background/tasks
-
-service sensors /system/bin/sensors.qcom
-    class late_start
-    user root
-    group root
-    disabled
 
 on property:ro.use_data_netmgrd=false
     # netmgr not supported on specific target
@@ -980,7 +960,6 @@ service ril-daemon /system/bin/rild
     socket rild-debug stream 660 radio system
     user root
     group radio cache inet misc audio log readproc wakelock qcom_diag net_raw
-    disabled
 
 service ril-daemon2 /system/bin/rild -c 2
     class main
@@ -988,7 +967,6 @@ service ril-daemon2 /system/bin/rild -c 2
     socket rild-debug2 stream 660 radio system
     user root
     group radio cache inet misc audio log readproc wakelock qcom_diag net_raw
-    disabled
 
 service profiler_daemon /system/bin/profiler_daemon
     class late_start
@@ -1035,3 +1013,20 @@ service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqb
     group root
     disabled
     writepid /dev/cpuset/system-background/tasks
+
+service init_wlan_bt /system/bin/sh /system/etc/init_wlan_bt.sh
+    class main
+    user root
+    group root
+    oneshot
+
+on property:init.svc.sensorservice=running
+    start unblock_wakelock
+
+service unblock_wakelock /system/bin/sh /system/etc/unblock_wakelock.sh
+    class main
+    user root
+    group root
+    oneshot
+    disabled
+
