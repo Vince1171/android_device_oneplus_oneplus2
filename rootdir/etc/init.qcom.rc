@@ -500,11 +500,14 @@ on property:sys.boot_completed=1
 
 # start services from here
 # start camera server as daemon
+# disabled to avoid ServiceManager: Waiting for service SurfaceFlinger
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
     writepid /dev/cpuset/camera-daemon/tasks
+    disabled
+    
 
 service qseecomd /system/bin/qseecomd
     class core
@@ -559,23 +562,29 @@ service thermal-engine /system/vendor/bin/thermal-engine
     group root
     writepid /dev/cpuset/system-background/tasks
 
-#service time_daemon /system/bin/time_daemon
-#    class late_start
-#    user root
-#    group root
-#    writepid /dev/cpuset/system-background/tasks
+#this is a test in order to keep time from one reboot to another
+service time_daemon /system/bin/time_daemon
+    class late_start
+    user root
+    group root
+    writepid /dev/cpuset/system-background/tasks
 
+
+#noisy service
 service adsprpcd /system/bin/adsprpcd
     class main
     user media
     group media
+    disabled
     
+# cannot be disabled => lost usb tethering
 service imsqmidaemon /system/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
     group radio log diag
 
+# cannot be disabled => lost usb tethering
 service imsdatadaemon /system/bin/imsdatadaemon
     class main
     user system
