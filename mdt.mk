@@ -109,6 +109,21 @@ $(ISDB_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(ISDB_SYMLINKS)
 
+
+CPE_IMAGES := \
+    cpe.b02 cpe.b04 cpe.b05 cpe.b06 cpe.b08 cpe.b10 cpe.b11 \
+    cpe.b12 cpe.b14 cpe.b16 cpe.b18 cpe.b20 cpe.b21 cpe.mdt
+	
+CPE_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(CPE_IMAGES)))
+$(CPE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "CPE firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware/image/$(notdir $@) $@
+	
+ALL_DEFAULT_INSTALLED_MODULES += $(CPE_SYMLINKS)
+
+
 KM_IMAGES := \
     keymaste.b00 keymaste.b01 keymaste.b02 keymaste.b03 keymaste.mdt
 
