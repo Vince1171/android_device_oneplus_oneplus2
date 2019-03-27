@@ -1023,7 +1023,7 @@ service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqb
     disabled
     writepid /dev/cpuset/system-background/tasks
 
-service init_wlan_bt /system/bin/sh /system/etc/droid-hcismd-up.sh
+service init_wlan_bt /system/bin/sh /system/etc/init_wlan_bt.sh
     class main
     user root
     group root

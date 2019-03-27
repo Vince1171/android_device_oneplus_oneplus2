@@ -30,7 +30,7 @@ qcom.bluetooth.soc=rome
 ro.bluetooth.a4wp=true
 ro.bluetooth.emb_wp_mode=true
 ro.bluetooth.wipower=true
-ro.qualcomm.bt.hci_transport=smb
+ro.qualcomm.bt.hci_transport=smd
 qcom.bt.dev_power_class=2
 qcom.bt.le_dev_pwr_class=2
 
