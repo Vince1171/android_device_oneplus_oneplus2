@@ -265,7 +265,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/adbd.conf:system/halium/etc/init/android-tools-adb.conf \
     $(LOCAL_PATH)/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
     $(LOCAL_PATH)/ubuntu/config.xml:system/halium/usr/share/powerd/device_configs/config-default.xml \
-    $(LOCAL_PATH)/ubuntu/android.conf:system/halium/etc/ubuntu-touch-session.d/android.conf
+    $(LOCAL_PATH)/ubuntu/android.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
+    $(LOCAL_PATH)/ubuntu/bluetooth-touch-oneplus2.conf:system/ubuntu/etc/init/bluetooth-touch-android.conf \
+    $(LOCAL_PATH)/ubuntu/bluetooth-touch-oneplus2.conf:system/ubuntu/etc/init/bluetooth-touch-oneplus2.conf  
 #   need to be optimized
 
 #This keeps time correct across reboots
