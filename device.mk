@@ -59,7 +59,6 @@ TARGET_SCREEN_WIDTH := 1080
 
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-hwui-memory.mk)
-$(call inherit-product, device/oneplus/oneplus2/mdt.mk)
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
