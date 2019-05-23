@@ -255,6 +255,18 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
      ro.qc.sensors.wl_dis=true
 
+# UBPorts
+ PRODUCT_PACKAGES += \
+     libubuntu_application_api \
+     direct_ubuntu_application_sensors_c_api_for_hybris_test \
+     direct_ubuntu_application_sensors_for_hybris_test \
+     direct_ubuntu_application_gps_c_api_for_hybris_test \
+     libcamera_compat_layer \
+     libmedia_compat_layer_32 \
+     libaudioflingerglue \
+     libdroidmedia \
+     libminisf
+
 # Ubuntu Overlay Files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/70-oneplus2.rules:system/halium/lib/udev/rules.d/70-android.rules \
