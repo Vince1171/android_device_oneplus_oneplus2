@@ -1057,9 +1057,3 @@ service unblock_wakelock /system/bin/sh /system/etc/unblock_wakelock.sh
     oneshot
     disabled
 
-service init_setup_first_boot /system/bin/sh /system/etc/init_setup_first_boot.sh
-    class main
-    user root
-    group root
-    oneshot
-
