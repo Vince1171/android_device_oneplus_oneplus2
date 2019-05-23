@@ -159,3 +159,8 @@ debug.qualcomm.sns.hal=w
 debug.qualcomm.sns.daemon=w
 debug.qualcomm.sns.libsensor1=w
 ro.qc.sensors.wl_dis=true
+
+# cm qcom configs
+com.qc.hardware = true
+com.qc.hdmi_out = true
+ro.hdmi.enable = true

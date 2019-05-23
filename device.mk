@@ -267,7 +267,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/android.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
     $(LOCAL_PATH)/ubuntu/bluetooth-touch-oneplus2.conf:system/ubuntu/etc/init/bluetooth-touch-android.conf \
     $(LOCAL_PATH)/ubuntu/bluetooth-touch-oneplus2.conf:system/ubuntu/etc/init/bluetooth-touch-oneplus2.conf  
-#   need to be optimized
+
+
+#aethercastctl
+PRODUCT_PROPERTY_OVERRIDES += \
+    ubuntu.widi.supported=1
+
 
 #This keeps time correct across reboots
 PRODUCT_PACKAGES += timekeep
