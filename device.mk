@@ -265,7 +265,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
      libmedia_compat_layer_32 \
      libaudioflingerglue \
      libdroidmedia \
-     libminisf
+     libminisf \
+     minimediaservice \
+     miniafservice
      
 # for off charging mode
 PRODUCT_PACKAGES += \
