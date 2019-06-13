@@ -266,6 +266,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
      libaudioflingerglue \
      libdroidmedia \
      libminisf
+     
+# for off charging mode
+PRODUCT_PACKAGES += \
+    charger_res_images
 
 # Ubuntu Overlay Files
 PRODUCT_COPY_FILES += \
