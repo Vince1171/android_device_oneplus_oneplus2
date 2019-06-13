@@ -574,11 +574,11 @@ service thermal-engine /system/vendor/bin/thermal-engine
     writepid /dev/cpuset/system-background/tasks
 
 #this is a test in order to keep time from one reboot to another
-service time_daemon /system/bin/time_daemon
-    class late_start
-    user root
-    group root
-    writepid /dev/cpuset/system-background/tasks
+#service time_daemon /system/bin/time_daemon
+#    class late_start
+#    user root
+#    group root
+#    writepid /dev/cpuset/system-background/tasks
 
 
 #noisy service

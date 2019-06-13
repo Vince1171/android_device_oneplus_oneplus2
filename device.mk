@@ -284,7 +284,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/bluetooth-touch-oneplus2.conf:system/ubuntu/etc/init/bluetooth-touch-android.conf \
     $(LOCAL_PATH)/ubuntu/bluetooth-touch-oneplus2.conf:system/ubuntu/etc/init/bluetooth-touch-oneplus2.conf \
     $(LOCAL_PATH)/ubuntu/touch.pa:system/halium/etc/pulse/touch.pa \
-    $(LOCAL_PATH)/ubuntu/anbox-tool:system/halium/usr/bin/anbox-tool
+    $(LOCAL_PATH)/ubuntu/anbox-tool:system/halium/usr/bin/anbox-tool \
+    $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf
+
 
 
 #aethercastctl
