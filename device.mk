@@ -303,6 +303,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf
 
 
+#droidmedia
+MINIMEDIA_SENSORSERVER_DISABLE := 1
+
 # telepathy-ofono quirks
 PRODUCT_PROPERTY_OVERRIDES += \
     t-o.quirk.forcesinkprimary=1 \
