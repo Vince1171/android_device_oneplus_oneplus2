@@ -303,6 +303,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf
 
 
+# telepathy-ofono quirks
+PRODUCT_PROPERTY_OVERRIDES += \
+    t-o.quirk.forcesinkprimary=1 \
+    t-o.quirk.forcesourceprimary=1
 
 #aethercastctl
 PRODUCT_PROPERTY_OVERRIDES += \
