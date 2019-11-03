@@ -258,29 +258,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # UBPorts
  PRODUCT_PACKAGES += \
     libubuntu_application_api \
-    libubuntu_application_api_32 \
     direct_ubuntu_application_sensors_c_api_for_hybris_test \
     direct_ubuntu_application_sensors_for_hybris_test \
     direct_ubuntu_application_gps_c_api_for_hybris_test \
     libcamera_compat_layer \
-    libcamera_compat_layer_32 \
     libmedia_compat_layer \
-    libmedia_compat_layer_32 \
     libdroidmedia \
-    libdroidmedia_32 \
     libminisf \
-    libminisf_32 \
     miniafservice \
     minimediaservice \
     minisfservice \
     libcameraservice \
-    libcameraservice_32 \
     libui_compat_layer \
-    libui_compat_layer_32 \
     libsf_compat_layer \
-    libsf_compat_layer_32 \
-    libaudioflingerglue \
-    libaudioflingerglue_32
+    libaudioflingerglue
      
 # for off charging mode
 PRODUCT_PACKAGES += \
