@@ -46,7 +46,9 @@ on early-init
     mount -t cpuset cpuset /dev/cpuset
 
 on fs
-    mount_all /fstab.qcom
+    mount_all ./fstab.${ro.hardware}
+    mkdir /data/cache
+    mount none /data/cache /cache bind
     restorecon_recursive /persist
 
 on init
