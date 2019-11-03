@@ -210,6 +210,9 @@ CONFIG_EAP_PROXY_MSM8994_TARGET := true
 #allow arm64 libhybris
 HYBRIS_MEDIA_32_BIT_ONLY := false
 
+# OP2 has a too small cache partition
+HALIUM_DATA_AS_CACHE := true
+
 # Enable dexpreopt to speed boot time
 ifeq ($(HOST_OS),linux)
   ifeq ($(call match-word-in-list,$(TARGET_BUILD_VARIANT),user),true)
